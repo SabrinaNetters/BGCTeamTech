@@ -7,11 +7,20 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
-	<!-- cURL api cmmd -->
-	<!-- curl -X POST -u "apikey:LkBqSidCXobCSdtwcaP3MBmtp6wNqjiYMZ0qpN-4wzqE" --header "Content-Type: application/json" --header "Accept: audio/wav" --data "{\"text\":\"JambaJuice Location at Sunny Beach has 2 pounds of fruit pulp available for pickup\"}" --output LATeam.wav "https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/d4f95d11-524b-435e-9056-b810070d68ad/v1/synthesize?voice=en-US_MichaelV3Voice" -->
+
+	<!-- Api key for watson assistant -->
+	<!-- {
+		"apikey": "UPKOhd-MYZmySsYPa6cGMGBi0-F4-P2jgyw3xwVpxxMw",
+		"iam_apikey_description": "Auto-generated for key crn:v1:bluemix:public:conversation:us-south:a/ce8bd6a803cd4d80a6bf92c80dcdbe38:d728c4e1-b687-485d-85dd-3cb6219fecb1:resource-key:343c7466-e8f8-4425-8beb-9618c28c48d0",
+		"iam_apikey_name": "Auto-generated service credentials",
+		"iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+		"iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/ce8bd6a803cd4d80a6bf92c80dcdbe38::serviceid:ServiceId-34b4b75d-fea5-4c75-8e31-a6929e726947",
+		"url": "https://api.us-south.assistant.watson.cloud.ibm.com/instances/d728c4e1-b687-485d-85dd-3cb6219fecb1"
+	} -->
 
 
 <!-- Sidebar/menu -->
@@ -31,7 +40,7 @@
 </nav>
 
 <!-- Top menu on small screens -->
-<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding" style="background-image: url('plantBackground.jpg')">
   <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
   <span>Bon App-Petite</span>
 </header>
@@ -45,7 +54,7 @@
   <!-- Header -->
   <div class="w3-container" style="margin-top:80px" id="showcase">
     <h1 class="w3-jumbo"><b>Bon App-Petite</b></h1>
-    <h1 class="w3-xxxlarge" style="color:#1F8555"><b>Showcase.</b></h1>
+		<p><b>Browse our website or use our chatbot to look for nearby restaurants</b></p>
     <hr style="width:50px;border:5px solid #FCEFB4" class="w3-round">
   </div>
   
@@ -134,31 +143,31 @@
   </div>
 
   <!-- Where our IBM apis are utilized -->
-  <div class="w3-container" id="api" style="margin-top:75px">
-    <h1 class="w3-xxxlarge" style="color:#1F8555"><b>APIs.</b></h1>
+  <!-- <div class="w3-container" id="api" style="margin-top:75px">
+    <h1 class="w3-xxxlarge" style="color:#1F8555"><b>Alerts Translation</b></h1>
     <hr style="width:50px;border:5px solid #FCEFB4" class="w3-round">
-    <p>Some text our prices. Lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure</p>
+    <p>Use this function to breakdown language barriers</p>
   </div>
 
   <div class="w3-row-padding">
-    <div class="w3-half w3-margin-bottom" style="border:3px solid green">
-      <div class="w3-section">
-        <label>Input Message</label>
-        <textarea rows="4" cols="20"></textarea>
-				<button class="w3-button w3-red w3-padding-large w3-hover-black">Send</button>
+    <div class="w3-half w3-margin-bottom">
+      <div class="w3-section"> -->
+        <!-- <label>Input Message</label> -->
+        <!-- <textarea rows="6" cols="50">Insert text here</textarea>
+				<button class="w3-button w3-green w3-padding-large w3-hover-black" onclick={bappy}>Submit</button>
       </div>
-    </div>
+    </div> -->
         
-    <div class="w3-half">
-      <div class="w3-section">
-        <label>Output Message</label>
-				<textarea rows="4" cols="20"></textarea>
-				<button class="w3-button w3-red w3-padding-large w3-hover-black">Send</button>
-      </div>
+    <!-- <div class="w3-half w3-margin-bottom" >
+      <div class="w3-section"> -->
+        <!-- <label>Output Message</label> -->
+				<!-- <button style="font-size:24px">Listen <i class="fa fa-volume-up"></i></button> -->
+				<!-- <button class="w3-button w3-red w3-padding-large w3-hover-black">Send</button> -->
+      <!-- </div>
     </div>
 
 
-  </div>
+  </div> -->
   
   <!-- Contact -->
   <div class="w3-container" id="contact" style="margin-top:75px">
@@ -207,6 +216,20 @@ function onClick(element) {
   var captionText = document.getElementById("caption");
   captionText.innerHTML = element.alt;
 }
+
+//chatbot
+  window.watsonAssistantChatOptions = {
+    integrationID: "e69d1a1b-ca71-4738-9148-7a0218f11307", // The ID of this integration.
+    region: "us-south", // The region your integration is hosted in.
+    serviceInstanceID: "d728c4e1-b687-485d-85dd-3cb6219fecb1", // The ID of your service instance.
+    onLoad: function(instance) { instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+
 </script>
 
 </body>
